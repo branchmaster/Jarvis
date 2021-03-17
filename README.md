@@ -48,8 +48,6 @@ Thanks:
 * [Mkaraniya](https://github.com/mkaraniya) & [Dev73](https://github.com/Devp73) - OpenUserBot
 * [MoveAngel](https://github.com/MoveAngel) - Original One4UBot
 
-and many more people who aren't mentioned here, but may be found in [Contributors](https://github.com/MoveAngel/One4uBot/graphs/contributors).
-
 ## License
 
 This userbot licensed on [Raphielscape Public License](https://github.com/MoveAngel/One4uBot/blob/sql-extended/LICENSE) - Version 1.d, March 2021
