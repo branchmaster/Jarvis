@@ -24,28 +24,18 @@ Easy way to get STRING_SESSION. Click the button and then click button colored g
 ### Run on repl.it
 [![Run repl.it](https://img.shields.io/badge/run-string__session.py-blue?style=flat-square&logo=repl.it)](https://replit.com/@nmayorga78/Jarvis?lite=1&outputonly=1)
 
-### or Run on your terminal
-```
-wget https://raw.githubusercontent.com/MoveAngel/One4uBot/sql-extended/terminal_getstring.sh && bash terminal_getstring.sh
-```
-
 ## How To Host?
 
 The easiest way to deploy this great bot! is click on button below.
 Make sure you have an account of heroku and follow all the steps required.
+
+- Get your `API_ID` and `API_HASH` from [here](https://my.telegram.org/)
 
 <p align="left"><a href="https://heroku.com/deploy?template=https://github.com/nmayorga78/Jarvis/tree/sql-extended"> <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku" /></a></p>
 
 ## Credits
 
 Thanks: 
-* [RaphielGang](https://github.com/RaphielGang) - Telegram-Paperplane
-* [AvinashReddy3108](https://github.com/AvinashReddy3108) - PaperplaneExtended
-* [kandnub](https://github.com/kandnub) - TG-UserBot
-* [AdekMaulana](https://github.com/adekmaulana) - ProjectBish
-* [Mr.Miss](https://github.com/keselekpermen69) - Userbutt
-* [GengKapak](https://github.com/GengKapak) - DCLXVI
-* [Mkaraniya](https://github.com/mkaraniya) & [Dev73](https://github.com/Devp73) - OpenUserBot
 * [MoveAngel](https://github.com/MoveAngel) - Original One4UBot
 
 ## License
