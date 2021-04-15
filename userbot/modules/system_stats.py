@@ -241,8 +241,8 @@ async def amireallyalive(alive):
         f"•  🕒 `Bot Uptime      : {uptime} `\n"
         "`⊷⊷⊷⊷⊷⊷⊷⊷⊷⊷⊶⊷⊶⊶⊶⊶⊶⊶⊶⊶⊶⊶`"
     )
-    if ALIVE_LOGO: https://telegra.ph/file/d12f7e46c235e40b6e6c4.jpg
-        try:
+    if ALIVE_LOGO:
+        try: https://telegra.ph/file/d12f7e46c235e40b6e6c4.jpg
             logo = ALIVE_LOGO
             await bot.send_file(alive.chat_id, logo, caption=output)
             await alive.delete()
