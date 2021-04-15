@@ -229,7 +229,7 @@ async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
-        "`Jarvis services online...`\n"
+        "`Jarvis en linea...`\n"
         "`⊷⊷⊷⊷⊷⊷⊷⊷⊷⊷⊶⊷⊶⊶⊶⊶⊶⊶⊶⊶⊶⊶`\n"
         f"•  ⚙️ `Telethon       : v{version.__version__} `\n"
         f"•  🐍 `Python         : v{python_version()} `\n"
@@ -242,7 +242,7 @@ async def amireallyalive(alive):
         "`⊷⊷⊷⊷⊷⊷⊷⊷⊷⊷⊶⊷⊶⊶⊶⊶⊶⊶⊶⊶⊶⊶`"
     )
     if ALIVE_LOGO:
-        try: https://telegra.ph/file/d12f7e46c235e40b6e6c4.jpg
+        try:
             logo = ALIVE_LOGO
             await bot.send_file(alive.chat_id, logo, caption=output)
             await alive.delete()
