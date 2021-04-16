@@ -234,9 +234,9 @@ async def amireallyalive(alive):
         f"•  👤 `Usuario        :`  {DEFAULTUSER} \n"
         "`----------------------------------`\n"
         f"•  💻 `Basado en      : SLQ+ `\n"
-        f"•  🗃 `Modulos         : {len(modules)} `\n"
-        f"•  🤖 `Jarvis          : v{USERBOT_VERSION} `\n"
-        f"•  🕒 `Bot Uptime      : {uptime} `\n"
+        f"•  🗃 `Modulos        : {len(modules)} `\n"
+        f"•  🤖 `Jarvis         : v{USERBOT_VERSION} `\n"
+        f"•  🕒 `Bot Uptime     : {uptime} `\n"
         "`⊷⊷⊷⊷⊷⊷⊷⊷⊷⊷⊶⊷⊶⊶⊶⊶⊶⊶⊶⊶⊶⊶`"
     )
     if ALIVE_LOGO:
