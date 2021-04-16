@@ -24,16 +24,8 @@ from userbot import CMD_HELP, bot
 from userbot.events import register
 
 KANGING_STR = [
-    "Using Witchery to kang this sticker...",
-    "Plagiarising hehe...",
-    "Inviting this sticker over to my pack...",
-    "Kanging this sticker...",
-    "Hey that's a nice sticker!\nMind if I kang?!..",
-    "hehe me stel ur stikér\nhehe.",
-    "Ay look over there (☉｡☉)!→\nWhile I kang this...",
-    "Roses are red violets are blue, kanging this sticker so my pacc looks cool",
-    "Imprisoning this sticker...",
-    "Mr.Steal Your Sticker is stealing this sticker... ",
+    "Robando sticker...",
+    "Clonando sticker...",
 ]
 
 
@@ -137,9 +129,9 @@ async def kang(args):
                     packname = f"a{user.id}_by_{user.username}_{pack}"
                     packnick = f"@{user.username} pack Vol.{pack}"
                     await args.edit(
-                        "`Switching to Pack "
+                        "`Cambiando a un nuevo paquete "
                         + str(pack)
-                        + " due to insufficient space`"
+                        + " debido al espacio insuficiente`"
                     )
                     await conv.send_message(packname)
                     x = await conv.get_response()
@@ -181,9 +173,9 @@ async def kang(args):
                         # Ensure user doesn't get spamming notifications
                         await bot.send_read_acknowledge(conv.chat_id)
                         await args.edit(
-                            f"`Sticker added in a Different Pack !\
-                            \nThis Pack is Newly created!\
-                            \nYour pack can be found [here](t.me/addstickers/{packname})",
+                            f"`Sticker agregado en un paquete diferente !\
+                            \nEste Paquete fue creado recientemente !\
+                            \nPuedes encontrar tus stickers [Aqui](t.me/addstickers/{packname})",
                             parse_mode="md",
                         )
                         return
@@ -196,7 +188,7 @@ async def kang(args):
                 rsp = await conv.get_response()
                 if "Sorry, the file type is invalid." in rsp.text:
                     await args.edit(
-                        "`Failed to add sticker, use` @Stickers `bot to add the sticker manually.`"
+                        "`No se pudo agregar el sticker, use el bot `@Stickers` para agregar el sticker manualmente.`"
                     )
                     return
                 await conv.send_message(emoji)
@@ -208,7 +200,7 @@ async def kang(args):
                 # Ensure user doesn't get spamming notifications
                 await bot.send_read_acknowledge(conv.chat_id)
         else:
-            await args.edit("`Brewing a new Pack...`")
+            await args.edit("`Preparando un nuevo paquete...`")
             async with bot.conversation("Stickers") as conv:
                 await conv.send_message(cmd)
                 await conv.get_response()
@@ -227,7 +219,7 @@ async def kang(args):
                 rsp = await conv.get_response()
                 if "Sorry, the file type is invalid." in rsp.text:
                     await args.edit(
-                        "`Failed to add sticker, use` @Stickers `bot to add the sticker manually.`"
+                        "`No se pudo agregar el sticker, use el bot `@Stickers` para agregar el sticker manualmente.`"
                     )
                     return
                 await conv.send_message(emoji)
@@ -253,8 +245,8 @@ async def kang(args):
                 await bot.send_read_acknowledge(conv.chat_id)
 
         await args.edit(
-            f"`Sticker kanged successfully!`\
-            \nPack can be found [here](t.me/addstickers/{packname})",
+            f"`Sticker clonado con éxito!`\
+            \nPuedes encontrar tus stickers [Aqui](t.me/addstickers/{packname})",
             parse_mode="md",
         )
 
@@ -287,23 +279,23 @@ async def resize_photo(photo):
 @register(outgoing=True, pattern="^.stkrinfo$")
 async def get_pack_info(event):
     if not event.is_reply:
-        await event.edit("`I can't fetch info from nothing, can I ?!`")
+        await event.edit("`No puedo obtener informacion de la nada, verdad ?!`")
         return
 
     rep_msg = await event.get_reply_message()
     if not rep_msg.document:
-        await event.edit("`Reply to a sticker to get the pack details`")
+        await event.edit("`Responde a un sticker para obtener los detalles del paquete.`")
         return
 
     try:
         stickerset_attr = rep_msg.document.attributes[1]
-        await event.edit("`Fetching details of the sticker pack, please wait..`")
+        await event.edit("`Obteniendo detalles del pack de sticker, espere...`")
     except BaseException:
-        await event.edit("`This is not a sticker. Reply to a sticker.`")
+        await event.edit("`Esto no es un sticker. Responde a un sticker.`")
         return
 
     if not isinstance(stickerset_attr, DocumentAttributeSticker):
-        await event.edit("`This is not a sticker. Reply to a sticker.`")
+        await event.edit("`Esto no es un sticker. Responde a un sticker.`")
         return
 
     get_stickerset = await bot(
@@ -320,12 +312,12 @@ async def get_pack_info(event):
             pack_emojis.append(document_sticker.emoticon)
 
     OUTPUT = (
-        f"**Sticker Title:** `{get_stickerset.set.title}\n`"
-        f"**Sticker Short Name:** `{get_stickerset.set.short_name}`\n"
-        f"**Official:** `{get_stickerset.set.official}`\n"
-        f"**Archived:** `{get_stickerset.set.archived}`\n"
-        f"**Stickers In Pack:** `{len(get_stickerset.packs)}`\n"
-        f"**Emojis In Pack:**\n{' '.join(pack_emojis)}"
+        f"**Título del Sticker:** `{get_stickerset.set.title}\n`"
+        f"**Nombre corto del Sticker:** `{get_stickerset.set.short_name}`\n"
+        f"**Oficial:** `{get_stickerset.set.official}`\n"
+        f"**Archivado:** `{get_stickerset.set.archived}`\n"
+        f"**Stickers en el pack:** `{len(get_stickerset.packs)}`\n"
+        f"**Emojis en el pack:**\n{' '.join(pack_emojis)}"
     )
 
     await event.edit(OUTPUT)
@@ -334,18 +326,18 @@ async def get_pack_info(event):
 @register(outgoing=True, pattern="^.getsticker$")
 async def sticker_to_png(sticker):
     if not sticker.is_reply:
-        await sticker.edit("`NULL information to fetch...`")
+        await sticker.edit("`Responde a un sticker...`")
         return False
 
     img = await sticker.get_reply_message()
     if not img.document:
-        await sticker.edit("`Reply to a sticker...`")
+        await sticker.edit("`Responde a un sticker...`")
         return False
 
     try:
         img.document.attributes[1]
     except Exception:
-        await sticker.edit("`This is not a sticker...`")
+        await sticker.edit("`Responde a un sticker...`")
         return
 
     with io.BytesIO() as image:
@@ -355,7 +347,7 @@ async def sticker_to_png(sticker):
         try:
             await img.reply(file=image, force_document=True)
         except Exception:
-            await sticker.edit("`Error, can't send file...`")
+            await sticker.edit("`Error, no se puede enviar el archivo...`")
         else:
             await sticker.delete()
     return
@@ -364,15 +356,11 @@ async def sticker_to_png(sticker):
 CMD_HELP.update(
     {
         "stickers": ".kang\
-\nUsage: Reply .kang to a sticker or an image to kang it to your userbot pack.\
+\nUsage: Responde .kang a un sticker o una imagen para clonarlo en tu pacquete de stickers.\
 \n\n.kang [emoji('s)]\
-\nUsage: Works just like .kang but uses the emoji('s) you picked.\
-\n\n.kang [number]\
-\nUsage: Kang's the sticker/image to the specified pack but uses 🤔 as emoji.\
-\n\n.kang [emoji('s)] [number]\
-\nUsage: Kang's the sticker/image to the specified pack and uses the emoji('s) you picked.\
+\nUsage: Funciona igual que .kang pero usa el emoji que tu eliges.\
 \n\n.stkrinfo\
-\nUsage: Gets info about the sticker pack.\
+\nUsage: Obtener informacion del pack de stickers.\
 \n\n.getsticker\
 \nUsage: reply to a sticker to get 'PNG' file of sticker."
     }
