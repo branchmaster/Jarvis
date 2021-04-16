@@ -25,7 +25,7 @@ from userbot.events import register
 
 # ========================= CONSTANTS ============================
 AFKSTR = [
-    "Estoy ocupado ahora, espera que me conecte :)",
+    "Estoy AFK ahora, espera que me conecte :)",
 ]
 
 global USER_AFK  # pylint:disable=E0602
