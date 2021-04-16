@@ -95,7 +95,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         except GitCommandError as error:
             await event.edit(f"{txt}\n`Here is the error log:\n{error}`")
             return repo.__del__()
-        await event.edit("`Successfully Updated!\n" "Reiniciando, espere...`")
+        await event.edit("`Actualizado exitosamente!\n" "Reiniciando, espere...`")
 
         if BOTLOG:
             await event.client.send_message(
@@ -114,7 +114,7 @@ async def update(event, repo, ups_rem, ac_br):
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
     await event.edit(
-        "`Successfully Updated!\n" "Jarvis se está reiniciando... Espere un segundo...!`"
+        "`Actualizado exitosamente!\n" "Jarvis se está reiniciando... Espere un segundo...!`"
     )
 
     if BOTLOG:
