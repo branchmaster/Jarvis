@@ -99,7 +99,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 
         if BOTLOG:
             await event.client.send_message(
-                BOTLOG_CHATID, "#UPDATE \n" "Jarvis fue actualizado con éxito"
+                BOTLOG_CHATID, "#ACTUALIZAR \n" "Jarvis fue actualizado con éxito"
             )
 
     else:
@@ -119,7 +119,7 @@ async def update(event, repo, ups_rem, ac_br):
 
     if BOTLOG:
         await event.client.send_message(
-            BOTLOG_CHATID, "#UPDATE \n" "Jarvis fue actualizado con éxito"
+            BOTLOG_CHATID, "#ACTUALIZAR \n" "Jarvis fue actualizado con éxito"
         )
 
     # Spin a new instance of bot
