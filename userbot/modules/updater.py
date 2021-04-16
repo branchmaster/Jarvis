@@ -65,8 +65,8 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         heroku_applications = heroku.apps()
         if HEROKU_APP_NAME is None:
             await event.edit(
-                "`Please set up HEROKU_APP_NAME variable"
-                " to be able to deploy newest changes of userbot.`"
+                "`Configure la variable HEROKU_APP_NAME"
+                " para poder implementar los cambios más recientes de userbot.`"
             )
             repo.__del__()
             return
@@ -76,10 +76,10 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
                 break
         if heroku_app is None:
             await event.edit(
-                f"{txt}\n`Invalid Heroku credentials for deploying userbot dyno.`"
+                f"{txt}\n`Credenciales de Heroku no válidas para implementar userbot dyno.`"
             )
             return repo.__del__()
-        await event.edit("`Userbot dyno build in progress, please wait...`")
+        await event.edit("`Userbot dyno contrucción en progreso, por favor espere...`")
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
         heroku_git_url = heroku_app.git_url.replace(
@@ -95,11 +95,11 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         except GitCommandError as error:
             await event.edit(f"{txt}\n`Here is the error log:\n{error}`")
             return repo.__del__()
-        await event.edit("`Successfully Updated!\n" "Restarting, please wait...`")
+        await event.edit("`Successfully Updated!\n" "Reiniciando, espere...`")
 
         if BOTLOG:
             await event.client.send_message(
-                BOTLOG_CHATID, "#UPDATE \n" "Your One4uBot was successfully updated"
+                BOTLOG_CHATID, "#UPDATE \n" "Jarvis fue actualizado con éxito"
             )
 
     else:
@@ -114,12 +114,12 @@ async def update(event, repo, ups_rem, ac_br):
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
     await event.edit(
-        "`Successfully Updated!\n" "Bot is restarting... Wait for a second!`"
+        "`Successfully Updated!\n" "Jarvis se está reiniciando... Espere un segundo...!`"
     )
 
     if BOTLOG:
         await event.client.send_message(
-            BOTLOG_CHATID, "#UPDATE \n" "Your One4uBot was successfully updated"
+            BOTLOG_CHATID, "#UPDATE \n" "Jarvis fue actualizado con éxito"
         )
 
     # Spin a new instance of bot
@@ -130,14 +130,14 @@ async def update(event, repo, ups_rem, ac_br):
 
 @register(outgoing=True, pattern=r"^.update(?: |$)(now|deploy)?")
 async def upstream(event):
-    "For .update command, check if the bot is up to date, update if specified"
-    await event.edit("`Checking for updates, please wait....`")
+    "El comando .update, verifica si Jarvis está actualizado, actualice si se especifica"
+    await event.edit("`Buscando actualizaciones, espere....`")
     conf = event.pattern_match.group(1)
     off_repo = UPSTREAM_REPO_URL
     force_update = False
     try:
-        txt = "`Oops.. Updater cannot continue due to "
-        txt += "some problems occured`\n\n**LOGTRACE:**\n"
+        txt = "`Oops.. El actualizador no puede continuar debido a "
+        txt += "ocurrieron algunos problemas`\n\n**LOGTRACE:**\n"
         repo = Repo()
     except NoSuchPathError as error:
         await event.edit(f"{txt}\n`directory {error} is not found`")
@@ -148,8 +148,8 @@ async def upstream(event):
     except InvalidGitRepositoryError as error:
         if conf is None:
             return await event.edit(
-                f"`Unfortunately, the directory {error} does not seem to be a git repository."
-                "\nBut we can fix that by force updating the userbot using .update now.`"
+                f"`Desafortunadamente, el directorio {error} no parece ser un repositorio de github."
+                "\nPero podemos solucionarlo forzando la actualización del userbot usando .update now.`"
             )
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
@@ -163,10 +163,10 @@ async def upstream(event):
     if ac_br != UPSTREAM_REPO_BRANCH:
         await event.edit(
             "**[UPDATER]:**\n"
-            f"`Looks like you are using your own custom branch ({ac_br}). "
-            "in that case, Updater is unable to identify "
-            "which branch is to be merged. "
-            "please checkout to any official branch`"
+            f"`Parece que está utilizando su propia rama personalizada ({ac_br}). "
+            "en ese caso, Updater no puede identificar "
+            "qué rama se fusionará. "
+            "por favor, pague en cualquier sucursal oficial`"
         )
         return repo.__del__()
     try:
@@ -190,7 +190,7 @@ async def upstream(event):
             f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`"
         )
         if len(changelog_str) > 4096:
-            await event.edit("`Changelog is too big, view the file to see it.`")
+            await event.edit("`El Changelog es muy grande, ver el archivo.`")
             file = open("output.txt", "w+")
             file.write(changelog_str)
             file.close()
@@ -202,14 +202,14 @@ async def upstream(event):
             remove("output.txt")
         else:
             await event.edit(changelog_str)
-        return await event.respond('`do ".update now/deploy" to update`')
+        return await event.respond('`ahora ".update now" para actualizar`')
 
     if force_update:
         await event.edit(
-            "`Force-Syncing to latest stable userbot code, please wait...`"
+            "`Forzando la sincronización con el último código de Jarvis, espere...`"
         )
     else:
-        await event.edit("`Updating One4uBot, please wait....`")
+        await event.edit("`Actualizando Jarvis, espere....`")
     if conf == "now":
         await update(event, repo, ups_rem, ac_br)
     elif conf == "deploy":
@@ -220,10 +220,10 @@ async def upstream(event):
 CMD_HELP.update(
     {
         "update": ".update"
-        "\nUsage: Checks if the main userbot repository has any updates and shows a changelog if so."
+        "\nUsage: Comprueba si el repositorio principal de Jarvis tiene actualizaciones y muestra un registro de cambios si es así."
         "\n\n.update now"
-        "\nUsage: Update your userbot, if there are any updates in your userbot repository."
+        "\nUsage: Actualice Jarvis, si hay alguna actualización en su repositorio de userbot."
         "\n\n.update deploy"
-        "\nUsage: Deploy your userbot at heroku, if there are any updates in your userbot repository."
+        "\nUsage: Despliega Jarvis en heroku, si hay actualizaciones en su repositorio de userbot."
     }
 )
