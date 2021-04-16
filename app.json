@@ -87,11 +87,6 @@
       "description": "En caso de que desee desactivar el registro, ponga esto False",
       "value": "False"
     },
-    "DEEZER_ARL_TOKEN": {
-      "description": "Fill of your Deezer ARL token. Get from https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken",
-      "required": false,
-      "value": ""
-    },
     "BOTLOG_CHATID": {
       "description": "ChatID del grupo de registro. Póngalo en '0' si BOTLOG = False y / o si LOGSPAMMER = False.",
       "value": "0"
