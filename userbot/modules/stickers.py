@@ -70,10 +70,10 @@ async def kang(args):
             is_anim = True
             photo = 1
         else:
-            await args.edit("`Unsupported File!`")
+            await args.edit("`Archivo no soportado!`")
             return
     else:
-        await args.edit("`I can't kang that...`")
+        await args.edit("`No puedo clonar eso...`")
         return
 
     if photo:
@@ -246,7 +246,7 @@ async def kang(args):
 
         await args.edit(
             f"`Sticker clonado con éxito!`\
-            \nPuedes encontrar tus stickers [Aqui](t.me/addstickers/{packname})",
+            \nPuedes encontrar tus stickers [aqui](t.me/addstickers/{packname})",
             parse_mode="md",
         )
 
