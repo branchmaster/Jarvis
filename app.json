@@ -85,7 +85,7 @@
     },
     "BOTLOG": {
       "description": "En caso de que desee desactivar el registro, ponga esto False",
-      "value": "True"
+      "value": "False"
     },
     "DEEZER_ARL_TOKEN": {
       "description": "Fill of your Deezer ARL token. Get from https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken",
