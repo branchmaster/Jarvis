@@ -231,11 +231,9 @@ async def amireallyalive(alive):
     output = (
         "`Jarvis en linea...`\n"
         "`⊷⊷⊷⊷⊷⊷⊷⊷⊷⊷⊶⊷⊶⊶⊶⊶⊶⊶⊶⊶⊶⊶`\n"
-        f"•  ⚙️ `Telethon       : v{version.__version__} `\n"
-        f"•  🐍 `Python         : v{python_version()} `\n"
         f"•  👤 `Usuario        :`  {DEFAULTUSER} \n"
         "`----------------------------------`\n"
-        f"•  💻 `Running on      : SLQ+ `\n"
+        f"•  💻 `Basado en      : SLQ+ `\n"
         f"•  🗃 `Modulos         : {len(modules)} `\n"
         f"•  🤖 `Jarvis          : v{USERBOT_VERSION} `\n"
         f"•  🕒 `Bot Uptime      : {uptime} `\n"
