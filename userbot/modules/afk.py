@@ -59,7 +59,7 @@ async def set_afk(afk_e):
     if string:
         AFKREASON = string
         await afk_e.edit(
-            f"Going AFK!\
+            f"Me voy AFK!\
         \nReason: `{string}`"
         )
     else:
@@ -171,7 +171,7 @@ async def mention_afk(mention):
             if mention.sender_id not in USERS or chat_title not in USERS:
                 if AFKREASON:
                     await mention.reply(
-                        f"I'm AFK since {afk_since}.\
+                        f"Estoy AFK hace {afk_since}.\
                         \nMotivo: `{AFKREASON}`"
                     )
                 else:
@@ -184,7 +184,7 @@ async def mention_afk(mention):
                 if USERS[mention.sender_id] % randint(2, 4) == 0:
                     if AFKREASON:
                         await mention.reply(
-                            f"I'm still AFK since {afk_since}.\
+                            f"Estoy AFK hace {afk_since}.\
                             \nMotivo: `{AFKREASON}`"
                         )
                     else:
@@ -257,7 +257,7 @@ async def afk_on_pm(sender):
             if sender.sender_id not in USERS:
                 if AFKREASON:
                     await sender.reply(
-                        f"I'm AFK since {afk_since}.\
+                        f"Estoy AFK hace {afk_since}.\
                         \nMotivo: `{AFKREASON}`"
                     )
                 else:
@@ -268,7 +268,7 @@ async def afk_on_pm(sender):
                 if USERS[sender.sender_id] % randint(2, 4) == 0:
                     if AFKREASON:
                         await sender.reply(
-                            f"I'm still AFK since {afk_since}.\
+                            f"Estoy AFK hace {afk_since}.\
                             \nMotivo: `{AFKREASON}`"
                         )
                     else:
