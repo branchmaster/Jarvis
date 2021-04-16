@@ -25,7 +25,7 @@ from userbot.events import register
 
 # ========================= CONSTANTS ============================
 AFKSTR = [
-    "Estoy AFK ahora, espera que me conecte :)",
+    "Estoy AFK ahora",
 ]
 
 global USER_AFK  # pylint:disable=E0602
@@ -86,7 +86,7 @@ async def type_afk_is_not_true(notafk):
     afk_end = back_alive.replace(microsecond=0)
     if ISAFK:
         ISAFK = False
-        msg = await notafk.respond("He vuelto! :).")
+        msg = await notafk.respond("He vuelto!")
         time.sleep(3)
         await msg.delete()
         if BOTLOG:
