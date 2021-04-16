@@ -362,6 +362,6 @@ CMD_HELP.update(
 \n\n.stkrinfo\
 \nUsage: Obtener informacion del pack de stickers.\
 \n\n.getsticker\
-\nUsage: reply to a sticker to get 'PNG' file of sticker."
+\nUsage: responde a un sticker para obtener el archivo 'PNG' del sticker."
     }
 )
