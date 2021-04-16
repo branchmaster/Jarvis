@@ -64,9 +64,6 @@ API_HASH = os.environ.get("API_HASH") or None
 # Userbot Session String
 STRING_SESSION = os.environ.get("STRING_SESSION") or None
 
-# Deezloader
-DEEZER_ARL_TOKEN = os.environ.get("DEEZER_ARL_TOKEN") or None
-
 # Logging channel/group ID configuration.
 BOTLOG_CHATID = int(os.environ.get("BOTLOG_CHATID") or 0)
 
