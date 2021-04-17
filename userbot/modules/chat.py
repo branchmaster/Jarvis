@@ -3,7 +3,7 @@
 # Licensed under the Raphielscape Public License, Version 1.d (the "License");
 # you may not use this file except in compliance with the License.
 #
-""" Userbot module containing userid, chatid and log commands"""
+""" Módulo de userbot que contiene comandos id de usuario, id de chat y log"""
 
 from asyncio import sleep
 
@@ -14,7 +14,7 @@ from userbot.modules.admin import get_user_from_event
 
 @register(outgoing=True, pattern="^.userid$")
 async def useridgetter(target):
-    """ For .userid command, returns the ID of the target user. """
+    """ El comando .userid, devuelve el ID del usuario de destino. """
     message = await target.get_reply_message()
     if message:
         if not message.forward:
@@ -34,7 +34,7 @@ async def useridgetter(target):
 
 @register(outgoing=True, pattern="^.link(?: |$)(.*)")
 async def permalink(mention):
-    """ For .link command, generates a link to the user's PM with a custom text. """
+    """ El comando .link, genera un enlace al PM del usuario con un texto personalizado. """
     user, custom = await get_user_from_event(mention)
     if not user:
         return
@@ -49,13 +49,13 @@ async def permalink(mention):
 
 @register(outgoing=True, pattern="^.chatid$")
 async def chatidgetter(chat):
-    """ For .chatid, returns the ID of the chat you are in at that moment. """
+    """ El comando .chatid, devuelve el ID del chat en el que se encuentra en ese momento. """
     await chat.edit("Chat ID: `" + str(chat.chat_id) + "`")
 
 
 @register(outgoing=True, pattern=r"^.log(?: |$)([\s\S]*)")
 async def log(log_text):
-    """ For .log command, forwards a message or the command argument to the bot logs group """
+    """ El comando .log, reenvía un mensaje o el argumento del comando al grupo de registros del bot """
     if BOTLOG:
         if log_text.reply_to_msg_id:
             reply_msg = await log_text.get_reply_message()
@@ -65,47 +65,47 @@ async def log(log_text):
             textx = user + log_text.pattern_match.group(1)
             await bot.send_message(BOTLOG_CHATID, textx)
         else:
-            await log_text.edit("`What am I supposed to log?`")
+            await log_text.edit("`¿Qué se supone que debo registrar??`")
             return
-        await log_text.edit("`Logged Successfully`")
+        await log_text.edit("`Registrado exitosamente`")
     else:
-        await log_text.edit("`This feature requires Logging to be enabled!`")
+        await log_text.edit("`Esta función requiere que el registro esté habilitado!`")
     await sleep(2)
     await log_text.delete()
 
 
 @register(outgoing=True, pattern="^.kickme$")
 async def kickme(leave):
-    """ Basically it's .kickme command """
-    await leave.edit("Nope, no, no, I go away")
+    """ Básicamente es el comando .kickme """
+    await leave.edit("Me voy de aquí")
     await leave.client.kick_participant(leave.chat_id, "me")
 
 
 @register(outgoing=True, pattern="^.unmutechat$")
 async def unmute_chat(unm_e):
-    """ For .unmutechat command, unmute a muted chat. """
+    """ El comando .unmutechat, reactivar un chat silenciado. """
     try:
         from userbot.modules.sql_helper.keep_read_sql import unkread
     except AttributeError:
-        await unm_e.edit("`Running on Non-SQL Mode!`")
+        await unm_e.edit("`Non-SQL Mode!`")
         return
     unkread(str(unm_e.chat_id))
-    await unm_e.edit("```Unmuted this chat Successfully```")
+    await unm_e.edit("```Se activó el sonido de este chat con éxito```")
     await sleep(2)
     await unm_e.delete()
 
 
 @register(outgoing=True, pattern="^.mutechat$")
 async def mute_chat(mute_e):
-    """ For .mutechat command, mute any chat. """
+    """ El comando .mutechat, silencia cualquier chat. """
     try:
         from userbot.modules.sql_helper.keep_read_sql import kread
     except AttributeError:
-        await mute_e.edit("`Running on Non-SQL mode!`")
+        await mute_e.edit("`Non-SQL mode!`")
         return
     await mute_e.edit(str(mute_e.chat_id))
     kread(str(mute_e.chat_id))
-    await mute_e.edit("`Shush! This chat will be silenced!`")
+    await mute_e.edit("`Shht..! Este chat será silenciado!`")
     await sleep(2)
     await mute_e.delete()
     if BOTLOG:
@@ -134,7 +134,7 @@ regexNinja = False
 
 @register(outgoing=True, pattern="^s/")
 async def sedNinja(event):
-    """For regex-ninja module, auto delete command starting with s/"""
+    """Para el módulo regex-ninja, comando de borrado automático que comienza con s/"""
     if regexNinja:
         await sleep(0.5)
         await event.delete()
@@ -144,14 +144,14 @@ async def sedNinja(event):
 async def sedNinjaToggle(event):
     """ Enables or disables the regex ninja module. """
     global regexNinja
-    if event.pattern_match.group(1) == "on":
+    if event.pattern_match.group(1) == "encendido":
         regexNinja = True
-        await event.edit("`Successfully enabled ninja mode for Regexbot.`")
+        await event.edit("`Modo ninja habilitado con éxito para Regexbot.`")
         await sleep(1)
         await event.delete()
-    elif event.pattern_match.group(1) == "off":
+    elif event.pattern_match.group(1) == "apagado":
         regexNinja = False
-        await event.edit("`Successfully disabled ninja mode for Regexbot.`")
+        await event.edit("`Modo ninja desactivado con éxito para Regexbot.`")
         await sleep(1)
         await event.delete()
 
@@ -159,21 +159,21 @@ async def sedNinjaToggle(event):
 CMD_HELP.update(
     {
         "chat": ".chatid\
-\nUsage: Fetches the current chat's ID\
+\nUso: Fetches the current chat's ID\
 \n\n.userid\
-\nUsage: Fetches the ID of the user in reply, if its a forwarded message, finds the ID for the source.\
+\nUso: Obtiene el ID del usuario en respuesta, si es un mensaje reenviado, encuentra el ID de la fuente.\
 \n\n.log\
-\nUsage: Forwards the message you've replied to in your bot logs group.\
+\nUso: Reenvía el mensaje que ha respondido en su grupo de registros de bot.\
 \n\n.kickme\
-\nUsage: Leave from a targeted group.\
+\nUso: Salir de un grupo objetivo.\
 \n\n.unmutechat\
-\nUsage: Unmutes a muted chat.\
+\nUso: Activa un chat silenciado.\
 \n\n.mutechat\
-\nUsage: Allows you to mute any chat.\
-\n\n.link <username/userid> : <optional text> (or) reply to someone's message with .link <optional text>\
-\nUsage: Generate a permanent link to the user's profile with optional custom text.\
+\nUso: Te permite silenciar cualquier chat.\
+\n\n.link <username/userid> : <texto opcional> o responder al mensaje de alguien con .link <texto opcional>\
+\nUso: Genera un enlace permanente al perfil del usuario con texto personalizado opcional.\
 \n\n.regexninja on/off\
-\nUsage: Globally enable/disables the regex ninja module.\
-\nRegex Ninja module helps to delete the regex bot's triggering messages."
+\nUso: Habilitar / deshabilitar globalmente el módulo regex ninja.\
+\nRegex El módulo Ninja ayuda a eliminar los mensajes de activación del bot de expresiones regulares."
     }
 )
