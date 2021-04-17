@@ -115,10 +115,6 @@
       "description": "Report spambots to @admins in groups after they join, just in case when you don't have admin powers to kick that shit yourself.",
       "value": "False"
     },
-    "TMP_DOWNLOAD_DIRECTORY": {
-      "description": "Download location for many modules (GDrive, .download etc..)",
-      "value": "./downloads/"
-    },
     "USER_TERM_ALIAS": {
       "description": "Set alias name of user for term bash command",
       "required": false
@@ -130,14 +126,6 @@
     "CLEAN_WELCOME": {
       "description": "Cuando se une una nueva persona, se elimina el mensaje de bienvenida anterior.",
       "value": "True"
-    },
-    "G_DRIVE_CLIENT_ID": {
-      "description": "Enter Your Client ID for Google Drive.",
-      "required": false
-    },
-    "G_DRIVE_DATA": {
-      "description": "Enter the Google Drive authentication data, as a JSON structure.",
-      "required": false
     },
     "LASTFM_API": {
       "description": "API Key for Last.FM module. [Get one from - https://www.last.fm/api/account/create]",
@@ -170,14 +158,6 @@
     },
     "ALIVE_LOGO": {
       "description": "Mostrar imagen / logotipo en mensaje .alive. Rellene el valor de la imagen de su imagen de enlace, use telegra.ph para obtener su propia imagen",
-      "required": false
-    },
-    "G_DRIVE_CLIENT_SECRET": {
-      "description": "Enter Your Client Secret for Google Drive.",
-      "required": false
-    },
-    "G_DRIVE_AUTH_TOKEN_DATA": {
-      "description": "Enter the Google Drive authentication data, as a JSON structure.",
       "required": false
     },
     "WEATHER_DEFCITY": {
