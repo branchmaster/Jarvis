@@ -3,7 +3,7 @@
 # Licensed under the Raphielscape Public License, Version 1.d (the "License");
 # you may not use this file except in compliance with the License.
 #
-"""A module for helping ban group join spammers."""
+"""Un modulo para banear spammers."""
 
 from asyncio import sleep
 
@@ -23,7 +23,7 @@ from userbot import (
 
 @bot.on(ChatAction)
 async def ANTI_SPAMBOTS(welcm):
-    """Ban a recently joined user if it matches the spammer checking algorithm."""
+    """Prohibir a un usuario que se haya unido recientemente si coincide con el algoritmo de verificación de spam."""
     try:
         if not ANTI_SPAMBOT:
             return
@@ -93,7 +93,7 @@ async def ANTI_SPAMBOTS(welcm):
                         data = r.json()
                     except BaseException:
                         print(
-                            "CAS check failed, falling back to legacy anti_spambot behaviour."
+                            "La verificación CAS falló, volviendo al comportamiento anti_spambot heredado."
                         )
                         data = None
 
@@ -144,8 +144,8 @@ async def ANTI_SPAMBOTS(welcm):
                         await welcm.reply(
                             "@admins\n"
                             "`ANTI SPAMBOT DETECTOR!\n"
-                            "THIS USER MATCHES MY ALGORITHMS AS A SPAMBOT!`"
-                            f"REASON: {reason}"
+                            "ESTE USUARIO COINCIDE CON MIS ALGORITMOS COMO SPAMBOT!`"
+                            f"MOTIVO: {reason}"
                         )
                         kicked = False
                         reported = True
@@ -153,9 +153,9 @@ async def ANTI_SPAMBOTS(welcm):
                     try:
 
                         await welcm.reply(
-                            "`Potential Spambot Detected !!`\n"
-                            f"`REASON:` {reason}\n"
-                            "Kicking away for now, will log the ID for further purposes.\n"
+                            "`Potencial Spambot detectado !!`\n"
+                            f"`MOTIVO:` {reason}\n"
+                            "Expulsado por ahora, registrará la ID para otros propósitos..\n"
                             f"`USER:` [{check_user.first_name}](tg://user?id={check_user.id})"
                         )
 
@@ -169,9 +169,9 @@ async def ANTI_SPAMBOTS(welcm):
                         if ANTI_SPAMBOT_SHOUT:
                             await welcm.reply(
                                 "@admins\n"
-                                "`ANTI SPAMBOT DETECTOR!\n"
-                                "THIS USER MATCHES MY ALGORITHMS AS A SPAMBOT!`"
-                                f"REASON: {reason}"
+                                "`DETECTOR ANTI SPAMBOT!\n"
+                                "ESTE USUARIO COINCIDE CON MIS ALGORITMOS COMO SPAMBOT!`"
+                                f"MOTIVO: {reason}"
                             )
                             kicked = False
                             reported = True
@@ -185,8 +185,8 @@ async def ANTI_SPAMBOTS(welcm):
                             f"USER ID: `{check_user.id}`\n"
                             f"CHAT: {welcm.chat.title}\n"
                             f"CHAT ID: `{welcm.chat_id}`\n"
-                            f"REASON: {reason}\n"
-                            f"MESSAGE:\n\n{message.text}",
+                            f"MOTIVO: {reason}\n"
+                            f"MENSAJE:\n\n{message.text}",
                         )
     except ValueError:
         pass
@@ -194,8 +194,8 @@ async def ANTI_SPAMBOTS(welcm):
 
 CMD_HELP.update(
     {
-        "anti_spambot": "If enabled in config.env or env var,\
-        \nthis module will ban(or inform the admins of the group about) the\
-        \nspammer(s) if they match the userbot's anti-spam algorithm."
+        "anti_spambot": "Si está habilitado en config.env o env var,\
+        \neste módulo prohibirá (o informará a los administradores del grupo sobre) el\
+        \nspammersi coinciden con el algoritmo antispam del userbot."
     }
 )
