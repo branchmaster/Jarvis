@@ -101,11 +101,6 @@ DB_URI = os.environ.get("DATABASE_URL") or None
 CHROME_DRIVER = os.environ.get("CHROME_DRIVER") or None
 GOOGLE_CHROME_BIN = os.environ.get("GOOGLE_CHROME_BIN") or None
 
-# OpenWeatherMap API Key
-OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID") or None
-WEATHER_DEFCITY = os.environ.get("WEATHER_DEFCITY") or None
-WEATHER_DEFLANG = os.environ.get("WEATHER_DEFLANG") or None
-
 # Wolfram Alpha API
 WOLFRAM_ID = os.environ.get("WOLFRAM_ID") or None
 
