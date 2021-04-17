@@ -99,10 +99,6 @@
       "description": "Interruptor de función de prohibición automática de PM.",
       "value": "True"
     },
-    "REM_BG_API_KEY": {
-      "description": "API Key for .rbg command. Get from https://www.remove.bg/api",
-      "required": false
-    },
     "ANTI_SPAMBOT": {
       "description": "Kicks spambots from groups after they join. [Requires admin powers in groups to kick.]",
       "value": "False"
