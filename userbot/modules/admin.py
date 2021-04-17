@@ -1019,32 +1019,32 @@ async def _(event):
 CMD_HELP.update(
     {
         "admin": ".promote <username/reply> <custom rank (optional)>\
-\nUsage: Proporciona derechos de administrador a la persona en el chat.\
+\nUo: Proporciona derechos de administrador a la persona en el chat.\
 \n\n.demote <username/reply>\
-\nUsage: Revoca los permisos de administrador de la persona en el chat.\
+\nUso: Revoca los permisos de administrador de la persona en el chat.\
 \n\n.ban <username/reply> <reason (optional)>\
-\nUsage: Bloquea a la persona de tu chat.\
+\nUso: Bloquea a la persona de tu chat.\
 \n\n.unban <username/reply>\
-\nUsage: Elimina la prohibición de la persona en el chat..\
+\nUso: Elimina la prohibición de la persona en el chat..\
 \n\n.mute <username/reply> <reason (optional)>\
-\nUsage: Silencia a la persona en el chat, también funciona con administradores.\
+\nUso: Silencia a la persona en el chat, también funciona con administradores.\
 \n\n.unmute <username/reply>\
-\nUsage: Elimina a la persona de la lista silenciada.\
+\nUso: Elimina a la persona de la lista silenciada.\
 \n\n.gmute <username/reply> <reason (optional)>\
-\nUsage: Silencia a la persona en todos los grupos que tiene en común con ella.\
+\nUso: Silencia a la persona en todos los grupos que tiene en común con ella.\
 \n\n.ungmute <username/reply>\
-\nUsage: Responda el mensaje de alguien con .ungmute para eliminarlo de la lista gmuted.\
+\nUso: Responda el mensaje de alguien con .ungmute para eliminarlo de la lista gmuted.\
 \n\n.zombies\
-\nUsage: Busca cuentas eliminadas en un grupo. Use .zombies clean para eliminar cuentas eliminadas del grupo.\
+\nUso: Busca cuentas eliminadas en un grupo. Use .zombies clean para eliminar cuentas eliminadas del grupo.\
 \n\n.all\
-\nUsage: Etiqueta a todos los miembros en el chat .\
+\nUso: Etiqueta a todos los miembros en el chat .\
 \n\n.admins\
-\nUsage: Recupera una lista de administradores en el chat..\
+\nUso: Recupera una lista de administradores en el chat..\
 \n\n.bots\
-\nUsage: Recupera una lista de bots en el chat..\
+\nUso: Recupera una lista de bots en el chat..\
 \n\n.users or .users <name of member>\
-\nUsage: Recupera a todos los usuarios en el chat.\
+\nUso: Recupera a todos los usuarios en el chat.\
 \n\n.setgppic <reply to image>\
-\nUsage: Cambia la imagen de perfil del grupo."
+\nUso: Cambia la imagen de perfil del grupo."
     }
 )
