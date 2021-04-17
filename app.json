@@ -75,10 +75,6 @@
       "value": "/usr/bin/chromium-browser",
       "required": false
     },
-    "OPEN_WEATHER_MAP_APPID": {
-      "description": "Obtenga su propia APPID (API key)from https://api.openweathermap.org/data/2.5/weather",
-      "required": false
-    },
     "GENIUS_ACCESS_TOKEN": {
       "description": "Client Access Token from https://genius.com/api-clients.",
       "required": false
@@ -145,15 +141,6 @@
     },
     "G_DRIVE_AUTH_TOKEN_DATA": {
       "description": "Enter the Google Drive authentication data, as a JSON structure.",
-      "required": false
-    },
-    "WEATHER_DEFCITY": {
-      "description": "Establezca la ciudad predeterminada para el módulo meteorológico del userbot.",
-      "required": false
-    },
-    "WEATHER_DEFLANG": {
-      "description": "Establecer el idioma predeterminado para el módulo meteorológico del userbot.",
-      "value": "es",
       "required": false
     },
     "USR_TOKEN_UPTOBOX": {
