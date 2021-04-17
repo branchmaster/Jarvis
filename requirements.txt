@@ -19,10 +19,12 @@ gTTS-token
 hachoir
 heroku3
 html_telegraph_poster
+httplib2
 humanize
 jikanpy
 lxml
 lyricsgenius
+oauth2client
 pendulum
 Pillow
 psutil
