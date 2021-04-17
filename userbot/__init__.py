@@ -113,9 +113,6 @@ OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID") or None
 WEATHER_DEFCITY = os.environ.get("WEATHER_DEFCITY") or None
 WEATHER_DEFLANG = os.environ.get("WEATHER_DEFLANG") or None
 
-# Genius lyrics API
-GENIUS = os.environ.get("GENIUS_ACCESS_TOKEN") or None
-
 # Wolfram Alpha API
 WOLFRAM_ID = os.environ.get("WOLFRAM_ID") or None
 
@@ -148,25 +145,6 @@ ZIP_DOWNLOAD_DIRECTORY = os.environ.get("ZIP_DOWNLOAD_DIRECTORY") or "./zips"
 # Clean Welcome
 CLEAN_WELCOME = sb(os.environ.get("CLEAN_WELCOME") or "False")
 
-# Last.fm Module
-BIO_PREFIX = os.environ.get("BIO_PREFIX") or None
-DEFAULT_BIO = os.environ.get("DEFAULT_BIO") or None
-
-LASTFM_API = os.environ.get("LASTFM_API") or None
-LASTFM_SECRET = os.environ.get("LASTFM_SECRET") or None
-LASTFM_USERNAME = os.environ.get("LASTFM_USERNAME") or None
-LASTFM_PASSWORD_PLAIN = os.environ.get("LASTFM_PASSWORD") or None
-LASTFM_PASS = md5(LASTFM_PASSWORD_PLAIN)
-if LASTFM_API is not None:
-    lastfm = LastFMNetwork(
-        api_key=LASTFM_API,
-        api_secret=LASTFM_SECRET,
-        username=LASTFM_USERNAME,
-        password_hash=LASTFM_PASS,
-    )
-else:
-    lastfm = None
-    
 # Google Drive Module
 G_DRIVE_DATA = os.environ.get("G_DRIVE_DATA") or None
 G_DRIVE_CLIENT_ID = os.environ.get("G_DRIVE_CLIENT_ID") or None
