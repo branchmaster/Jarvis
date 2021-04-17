@@ -99,10 +99,6 @@
       "description": "Interruptor de función de prohibición automática de PM.",
       "value": "True"
     },
-    "OCR_SPACE_API_KEY": {
-      "description": "OCR API Key for .ocr command. Get from https://ocr.space/ocrapi",
-      "required": false
-    },
     "REM_BG_API_KEY": {
       "description": "API Key for .rbg command. Get from https://www.remove.bg/api",
       "required": false
