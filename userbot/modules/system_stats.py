@@ -231,12 +231,12 @@ async def amireallyalive(alive):
     output = (
         "`Jarvis en linea...`\n"
         "`⊷⊷⊷⊷⊷⊷⊷⊷⊷⊷⊶⊷⊶⊶⊶⊶⊶⊶⊶⊶⊶⊶`\n"
-        f"•  👤 `Usuario     :`  {DEFAULTUSER} \n"
+        f"•  👤 `Usuario   :`  {DEFAULTUSER} \n"
         "`----------------------------------`\n"
-        f"•  💻 `Nucleo      : SLQ+ `\n"
-        f"•  🗃 `Modulos     : {len(modules)} `\n"
-        f"•  🤖 `Jarvis      : v{USERBOT_VERSION} `\n"
-        f"•  🕒 `Bot Uptime  : {uptime} `\n"
+        f"•  💻 `Núcleo    : SLQ+ `\n"
+        f"•  🗃 `Modulos   : {len(modules)} `\n"
+        f"•  🤖 `Jarvis    : v{USERBOT_VERSION} `\n"
+        f"•  🕒 `En línea: {uptime} `\n"
         "`⊷⊷⊷⊷⊷⊷⊷⊷⊷⊷⊶⊷⊶⊶⊶⊶⊶⊶⊶⊶⊶⊶`"
     )
     if ALIVE_LOGO:
