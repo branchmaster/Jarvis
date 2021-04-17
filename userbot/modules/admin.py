@@ -43,19 +43,19 @@ from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
 from userbot.events import register
 
 # =================== CONSTANT ===================
-PP_TOO_SMOL = "`The image is too small`"
-PP_ERROR = "`Failure while processing the image`"
-NO_ADMIN = "`I am not an admin!`"
-NO_PERM = "`I don't have sufficient permissions!`"
-NO_SQL = "`Running on Non-SQL mode!`"
+PP_TOO_SMOL = "`La imagen es demasiado pequeña`"
+PP_ERROR = "`Fallo al procesar la imagen`"
+NO_ADMIN = "`No soy administrador!`"
+NO_PERM = "`No tengo suficientes permisos!`"
+NO_SQL = "`Ejecutando en modo Non-SQL!`"
 
-CHAT_PP_CHANGED = "`Chat Picture Changed`"
+CHAT_PP_CHANGED = "`Imagen del chat cambiada`"
 CHAT_PP_ERROR = (
-    "`Some issue with updating the pic,`"
-    "`maybe coz I'm not an admin,`"
-    "`or don't have enough rights.`"
+    "`Algún problema con la actualización de la foto.,`"
+    "`tal vez porque no soy administrador,`"
+    "`o no tengo suficientes permisos.`"
 )
-INVALID_MEDIA = "`Invalid Extension`"
+INVALID_MEDIA = "`Extensión inválida`"
 
 BANNED_RIGHTS = ChatBannedRights(
     until_date=None,
@@ -88,11 +88,11 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 @register(outgoing=True, pattern="^.setgpic$")
 async def set_group_photo(gpic):
-    """ For .setgpic command, changes the picture of a group """
-    await gpic.edit("`Processing...`")
+    """ El comando .setgpic, cambia la imagen de un grupo """
+    await gpic.edit("`Procesando...`")
     await sleep(1)
     if not gpic.is_group:
-        await gpic.edit("`I don't think this is a group.`")
+        await gpic.edit("`No creo que esto sea un grupo.`")
         return
     replymsg = await gpic.get_reply_message()
     chat = await gpic.get_chat()
@@ -127,7 +127,7 @@ async def set_group_photo(gpic):
 
 @register(outgoing=True, pattern="^.promote(?: |$)(.*)")
 async def promote(promt):
-    """ For .promote command, promotes the replied/tagged person """
+    """ El comando .promote, promueve a la persona respondida / etiquetada """
     # Get targeted chat
     chat = await promt.get_chat()
     # Grab admin status or creator in a chat
@@ -148,7 +148,7 @@ async def promote(promt):
         pin_messages=True,
     )
 
-    await promt.edit("`Promoting...`")
+    await promt.edit("`Promoviendo...`")
     user, rank = await get_user_from_event(promt)
     if not rank:
         rank = "Administrator"  # Just in case.
@@ -160,7 +160,7 @@ async def promote(promt):
     # Try to promote if current user is admin or creator
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await promt.edit("`Promoted Successfully!`")
+        await promt.edit("`Promovido con éxito!`")
 
     # If Telethon spit BadRequestError, assume
     # we don't have Promote permission
@@ -172,15 +172,15 @@ async def promote(promt):
     if BOTLOG:
         await promt.client.send_message(
             BOTLOG_CHATID,
-            "#PROMOTE\n"
-            f"USER: [{user.first_name}](tg://user?id={user.id})\n"
+            "#PROMOVIDO\n"
+            f"USUARIO: [{user.first_name}](tg://user?id={user.id})\n"
             f"CHAT: {promt.chat.title}(`{promt.chat_id}`)",
         )
 
 
 @register(outgoing=True, pattern="^.demote(?: |$)(.*)")
 async def demote(dmod):
-    """ For .demote command, demotes the replied/tagged person """
+    """ El comando .demote, degrada a la persona respondida / etiquetada """
     # Admin right check
     chat = await dmod.get_chat()
     admin = chat.admin_rights
@@ -191,7 +191,7 @@ async def demote(dmod):
         return
 
     # If passing, declare that we're going to demote
-    await dmod.edit("`Demoting...`")
+    await dmod.edit("`Degradando...`")
     rank = "admeme"  # dummy rank, lol.
     user = await get_user_from_event(dmod)
     user = user[0]
@@ -224,15 +224,15 @@ async def demote(dmod):
     if BOTLOG:
         await dmod.client.send_message(
             BOTLOG_CHATID,
-            "#DEMOTE\n"
-            f"USER: [{user.first_name}](tg://user?id={user.id})\n"
+            "#DEGRADADO\n"
+            f"USUARIO: [{user.first_name}](tg://user?id={user.id})\n"
             f"CHAT: {dmod.chat.title}(`{dmod.chat_id}`)",
         )
 
 
 @register(outgoing=True, pattern="^.ban(?: |$)(.*)")
 async def ban(bon):
-    """ For .ban command, bans the replied/tagged person """
+    """ El comando .ban, prohíbe a la persona respondida / etiquetada """
     # Here laying the sanity check
     chat = await bon.get_chat()
     admin = chat.admin_rights
@@ -250,7 +250,7 @@ async def ban(bon):
         return
 
     # Announce that we're going to whack the pest
-    await bon.edit("`Whacking the pest!`")
+    await bon.edit("`Baneado!😎`")
 
     try:
         await bon.client(EditBannedRequest(bon.chat_id, user.id, BANNED_RIGHTS))
@@ -292,7 +292,7 @@ async def ban(bon):
 
 @register(outgoing=True, pattern="^.unban(?: |$)(.*)")
 async def nothanos(unbon):
-    """ For .unban command, unbans the replied/tagged person """
+    """ El comando .unban, anula la prohibición de la persona respondida / etiquetada """
     # Here laying the sanity check
     chat = await unbon.get_chat()
     admin = chat.admin_rights
@@ -304,7 +304,7 @@ async def nothanos(unbon):
         return
 
     # If everything goes well...
-    await unbon.edit("`Unbanning...`")
+    await unbon.edit("`Quitando ban...`")
 
     user = await get_user_from_event(unbon)
     user = user[0]
@@ -315,7 +315,7 @@ async def nothanos(unbon):
 
     try:
         await unbon.client(EditBannedRequest(unbon.chat_id, user.id, UNBAN_RIGHTS))
-        await unbon.edit("```Unbanned Successfully```")
+        await unbon.edit("```Puede volver al grupo...```")
 
         if BOTLOG:
             await unbon.client.send_message(
@@ -325,7 +325,7 @@ async def nothanos(unbon):
                 f"CHAT: {unbon.chat.title}(`{unbon.chat_id}`)",
             )
     except UserIdInvalidError:
-        await unbon.edit("`Uh oh my unban logic broke!`")
+        await unbon.edit("`Error :/ !`")
 
 
 @register(outgoing=True, pattern="^.mute(?: |$)(.*)")
@@ -359,22 +359,22 @@ async def spider(spdr):
     self_user = await spdr.client.get_me()
 
     if user.id == self_user.id:
-        await spdr.edit("`Hands too short, can't duct tape myself...\n(ヘ･_･)ヘ┳━┳`")
+        await spdr.edit("`Manos demasiado cortas, no puedo pegarme con cinta adhesiva...\n(ヘ･_･)ヘ┳━┳`")
         return
 
     # If everything goes well, do announcing and mute
-    await spdr.edit("`Gets a tape!`")
+    await spdr.edit("`shht...🤫 !`")
     if mute(spdr.chat_id, user.id) is False:
-        return await spdr.edit("`Error! User probably already muted.`")
+        return await spdr.edit("`¡Error! El usuario probablemente ya esté silenciado.`")
     else:
         try:
             await spdr.client(EditBannedRequest(spdr.chat_id, user.id, MUTE_RIGHTS))
 
             # Announce that the function is done
             if reason:
-                await spdr.edit(f"`Safely taped !!`\nReason: {reason}")
+                await spdr.edit(f"`shht...🤫 !!`\nReason: {reason}")
             else:
-                await spdr.edit("`Safely taped !!`")
+                await spdr.edit("`shht...🤫 !!`")
 
             # Announce to logging group
             if BOTLOG:
@@ -390,7 +390,7 @@ async def spider(spdr):
 
 @register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
 async def unmoot(unmot):
-    """ For .unmute command, unmute the replied/tagged person """
+    """ El comando .unmute, reactivar el sonido de la persona respondida / etiquetada """
     # Admin or creator check
     chat = await unmot.get_chat()
     admin = chat.admin_rights
@@ -409,7 +409,7 @@ async def unmoot(unmot):
         return
 
     # If admin or creator, inform the user and start unmuting
-    await unmot.edit("```Unmuting...```")
+    await unmot.edit("```Puedes escribir...```")
     user = await get_user_from_event(unmot)
     user = user[0]
     if user:
@@ -423,7 +423,7 @@ async def unmoot(unmot):
 
         try:
             await unmot.client(EditBannedRequest(unmot.chat_id, user.id, UNBAN_RIGHTS))
-            await unmot.edit("```Unmuted Successfully```")
+            await unmot.edit("```Puedes hablar...```")
 
         except UserIdInvalidError:
             await unmot.edit("`Uh oh my unmute logic broke!`")
@@ -440,7 +440,7 @@ async def unmoot(unmot):
 
 @register(incoming=True, disable_errors=True)
 async def muter(moot):
-    """ Used for deleting the messages of muted people """
+    """ Se utiliza para eliminar los mensajes de personas silenciadas. """
     try:
         from userbot.modules.sql_helper.gmute_sql import is_gmuted
         from userbot.modules.sql_helper.spam_mute_sql import is_muted
@@ -480,7 +480,7 @@ async def muter(moot):
 
 @register(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
 async def ungmoot(un_gmute):
-    """ For .ungmute command, ungmutes the target in the userbot """
+    """ El comando .ungmute, desmutea al usuario """
     # Admin or creator check
     chat = await un_gmute.get_chat()
     admin = chat.admin_rights
@@ -509,10 +509,10 @@ async def ungmoot(un_gmute):
     await un_gmute.edit("```Ungmuting...```")
 
     if ungmute(user.id) is False:
-        await un_gmute.edit("`Error! User probably not gmuted.`")
+        await un_gmute.edit("`¡Error! Probablemente el usuario no este silenciado.`")
     else:
         # Inform about success
-        await un_gmute.edit("```Ungmuted Successfully```")
+        await un_gmute.edit("```Puedes hablar...```")
 
         if BOTLOG:
             await un_gmute.client.send_message(
@@ -525,7 +525,7 @@ async def ungmoot(un_gmute):
 
 @register(outgoing=True, pattern="^.gmute(?: |$)(.*)")
 async def gspider(gspdr):
-    """ For .gmute command, globally mutes the replied/tagged person """
+    """ El comando .gmute, silencia globalmente a la persona respondida / etiquetada """
     # Admin or creator check
     chat = await gspdr.get_chat()
     admin = chat.admin_rights
@@ -552,12 +552,12 @@ async def gspider(gspdr):
     # If pass, inform and start gmuting
     await gspdr.edit("`Grabs a huge, sticky duct tape!`")
     if gmute(user.id) is False:
-        await gspdr.edit("`Error! User probably already gmuted.\nRe-rolls the tape.`")
+        await gspdr.edit("¡Error! El usuario probablemente ya esta silenciado.`")
     else:
         if reason:
-            await gspdr.edit(f"`Globally taped!`Reason: {reason}")
+            await gspdr.edit(f"`Silenciado globalmente!`Reason: {reason}")
         else:
-            await gspdr.edit("`Globally taped!`")
+            await gspdr.edit("`Silenciado globalmente!`")
 
         if BOTLOG:
             await gspdr.client.send_message(
@@ -570,22 +570,22 @@ async def gspider(gspdr):
 
 @register(outgoing=True, pattern="^.zombies(?: |$)(.*)", groups_only=False)
 async def rm_deletedacc(show):
-    """ For .zombies command, list all the ghost/deleted/zombie accounts in a chat. """
+    """ El comando .zombies, enumera todas las cuentas fantasmas / eliminadas / zombies en un chat. """
 
     con = show.pattern_match.group(1).lower()
     del_u = 0
-    del_status = "`No deleted accounts found, Group is clean`"
+    del_status = "`No se encontraron cuentas eliminadas, el grupo está limpio`"
 
-    if con != "clean":
-        await show.edit("`Searching for ghost/deleted/zombie accounts...`")
+    if con != "🔍":
+        await show.edit("`Buscando de cuentas fantasmas / eliminadas / zombies...`")
         async for user in show.client.iter_participants(show.chat_id):
 
             if user.deleted:
                 del_u += 1
                 await sleep(1)
         if del_u > 0:
-            del_status = f"`Found` **{del_u}** `ghost/deleted/zombie account(s) in this group,\
-            \nclean them by using .zombies clean`"
+            del_status = f"`Encontré` **{del_u}** `Cuentas eliminadas en este grupo,\
+            \nlímpialos usando .zombies clean`"
         await show.edit(del_status)
         return
 
@@ -596,10 +596,10 @@ async def rm_deletedacc(show):
 
     # Well
     if not admin and not creator:
-        await show.edit("`I am not an admin here!`")
+        await show.edit("`No soy un administrador aquí!`")
         return
 
-    await show.edit("`Deleting deleted accounts...\nOh I can do that?!?!`")
+    await show.edit("`liminando cuentas eliminadas...\nOh, puedo hacer eso?!?!`")
     del_u = 0
     del_a = 0
 
@@ -610,7 +610,7 @@ async def rm_deletedacc(show):
                     EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS)
                 )
             except ChatAdminRequiredError:
-                await show.edit("`I don't have ban rights in this group`")
+                await show.edit("`No tengo permisos de prohibición en este grupo.`")
                 return
             except UserAdminInvalidError:
                 del_u -= 1
@@ -619,11 +619,11 @@ async def rm_deletedacc(show):
             del_u += 1
 
     if del_u > 0:
-        del_status = f"Cleaned **{del_u}** deleted account(s)"
+        del_status = f"Expulsando **{del_u}** cuentas eliminadas"
 
     if del_a > 0:
-        del_status = f"Cleaned **{del_u}** deleted account(s) \
-        \n**{del_a}** deleted admin accounts are not removed"
+        del_status = f"Expulsando **{del_u}** cuentas eliminadas \
+        \n**{del_a}** las cuentas de administrador eliminadas no se eliminan"
 
     await show.edit(del_status)
     await sleep(2)
@@ -640,7 +640,7 @@ async def rm_deletedacc(show):
 
 @register(outgoing=True, pattern="^.all$")
 async def tagaso(event):
-    """ For .all command, mention all of the member in the group chat"""
+    """ El comando .all, mencione a todos los miembros del grupo chat"""
     if event.fwd_from:
         return
     await event.delete()
@@ -707,7 +707,7 @@ async def _(event):
 
 @register(outgoing=True, pattern="^.pin(?: |$)(.*)")
 async def pin(msg):
-    """ For .pin command, pins the replied/tagged message on the top the chat. """
+    """ El comando .pin, fija el mensaje respondido / etiquetado en la parte superior del chat. """
     # Admin or creator check
     chat = await msg.get_chat()
     admin = chat.admin_rights
@@ -721,7 +721,7 @@ async def pin(msg):
     to_pin = msg.reply_to_msg_id
 
     if not to_pin:
-        await msg.edit("`Reply to a message to pin it.`")
+        await msg.edit("`Responde a un mensaje para fijarlo.`")
         return
 
     options = msg.pattern_match.group(1)
@@ -737,7 +737,7 @@ async def pin(msg):
         await msg.edit(NO_PERM)
         return
 
-    await msg.edit("`Pinned Successfully!`")
+    await msg.edit("`Fijado correctamente!`")
 
     user = await get_user_from_id(msg.from_id, msg)
 
@@ -753,7 +753,7 @@ async def pin(msg):
 
 @register(outgoing=True, pattern="^.kick(?: |$)(.*)")
 async def kick(usr):
-    """ For .kick command, kicks the replied/tagged person from the group. """
+    """ El comando .kick, expulsa a la persona respondida / etiquetada del grupo. """
     # Admin or creator check
     chat = await usr.get_chat()
     admin = chat.admin_rights
@@ -766,10 +766,10 @@ async def kick(usr):
 
     user, reason = await get_user_from_event(usr)
     if not user:
-        await usr.edit("`Couldn't fetch user.`")
+        await usr.edit("`No se pudo recuperar el usuario.`")
         return
 
-    await usr.edit("`Kicking...`")
+    await usr.edit("`Expulsando...`")
 
     try:
         await usr.client.kick_participant(usr.chat_id, user.id)
@@ -808,7 +808,7 @@ async def get_users(show):
                         f"\n ⚜️ [{user.first_name}](tg://user?id={user.id}) `{user.id}`"
                     )
                 else:
-                    mentions += f"\nDeleted Account `{user.id}`"
+                    mentions += f"\nCuenta eliminada `{user.id}`"
         else:
             searchq = show.pattern_match.group(1)
             async for user in show.client.iter_participants(
@@ -819,13 +819,13 @@ async def get_users(show):
                         f"\n[{user.first_name}](tg://user?id={user.id}) `{user.id}`"
                     )
                 else:
-                    mentions += f"\nDeleted Account `{user.id}`"
+                    mentions += f"\nCuenta eliminada `{user.id}`"
     except ChatAdminRequiredError as err:
         mentions += " " + str(err) + "\n"
     try:
         await show.edit(mentions)
     except MessageTooLongError:
-        await show.edit("Damn, this is a huge group. Uploading users lists as file.")
+        await show.edit("Maldita sea, este es un grupo enorme. Subire la lista de usuarios como archivo.")
         file = open("userslist.txt", "w+")
         file.write(mentions)
         file.close()
@@ -839,7 +839,7 @@ async def get_users(show):
 
 
 async def get_user_from_event(event):
-    """ Get the user from argument or replied message. """
+    """ Obtener el usuario del mensaje respondido. """
     args = event.pattern_match.group(1).split(" ", 1)
     extra = None
     if event.reply_to_msg_id and not len(args) == 2:
@@ -889,7 +889,7 @@ async def get_user_from_id(user, event):
 
 @register(outgoing=True, pattern="^.usersdel ?(.*)")
 async def get_usersdel(show):
-    """ For .usersdel command, list all of the deleted users in a chat. """
+    """ El comando .usersdel, enumera a todos los usuarios eliminados en un chat. """
     info = await show.client.get_entity(show.chat_id)
     title = info.title if info.title else "this chat"
     mentions = "deletedUsers in {}: \n".format(title)
@@ -919,7 +919,7 @@ async def get_usersdel(show):
         await show.edit(mentions)
     except MessageTooLongError:
         await show.edit(
-            "Damn, this is a huge group. Uploading deletedusers lists as file."
+            "Maldita sea, este es un grupo enorme. Subire la lista de usuarios eliminados como archivo."
         )
         file = open("userslist.txt", "w+")
         file.write(mentions)
@@ -934,7 +934,7 @@ async def get_usersdel(show):
 
 
 async def get_userdel_from_event(event):
-    """ Get the deleted user from argument or replied message. """
+    """ Obtener el usuario eliminado del mensaje respondido. """
     args = event.pattern_match.group(1).split(" ", 1)
     extra = None
     if event.reply_to_msg_id and not len(args) == 2:
@@ -950,7 +950,7 @@ async def get_userdel_from_event(event):
             user = int(user)
 
         if not user:
-            await event.edit("`Pass the deleted user's username, id or reply!`")
+            await event.edit("`Pase el nombre de usuario, el ID o la respuesta del usuario eliminado!`")
             return
 
         if event.message.entities is not None:
@@ -984,7 +984,7 @@ async def get_userdel_from_id(user, event):
 
 @register(outgoing=True, pattern="^.bots(?: |$)(.*)")
 async def _(event):
-    """ For .listbot command, list all of the bots of the chat. """
+    """ El comando .listbot, enumera todos los bots del chat. """
     if event.fwd_from:
         return
     info = await event.client.get_entity(event.chat_id)
@@ -1019,32 +1019,32 @@ async def _(event):
 CMD_HELP.update(
     {
         "admin": ".promote <username/reply> <custom rank (optional)>\
-\nUsage: Provides admin rights to the person in the chat.\
+\nUsage: Proporciona derechos de administrador a la persona en el chat.\
 \n\n.demote <username/reply>\
-\nUsage: Revokes the person's admin permissions in the chat.\
+\nUsage: Revoca los permisos de administrador de la persona en el chat.\
 \n\n.ban <username/reply> <reason (optional)>\
-\nUsage: Bans the person off your chat.\
+\nUsage: Bloquea a la persona de tu chat.\
 \n\n.unban <username/reply>\
-\nUsage: Removes the ban from the person in the chat.\
+\nUsage: Elimina la prohibición de la persona en el chat..\
 \n\n.mute <username/reply> <reason (optional)>\
-\nUsage: Mutes the person in the chat, works on admins too.\
+\nUsage: Silencia a la persona en el chat, también funciona con administradores.\
 \n\n.unmute <username/reply>\
-\nUsage: Removes the person from the muted list.\
+\nUsage: Elimina a la persona de la lista silenciada.\
 \n\n.gmute <username/reply> <reason (optional)>\
-\nUsage: Mutes the person in all groups you have in common with them.\
+\nUsage: Silencia a la persona en todos los grupos que tiene en común con ella.\
 \n\n.ungmute <username/reply>\
-\nUsage: Reply someone's message with .ungmute to remove them from the gmuted list.\
+\nUsage: Responda el mensaje de alguien con .ungmute para eliminarlo de la lista gmuted.\
 \n\n.zombies\
-\nUsage: Searches for deleted accounts in a group. Use .zombies clean to remove deleted accounts from the group.\
+\nUsage: Busca cuentas eliminadas en un grupo. Use .zombies clean para eliminar cuentas eliminadas del grupo.\
 \n\n.all\
-\nUsage: Tag all member in the group chat.\
+\nUsage: Etiqueta a todos los miembros en el chat .\
 \n\n.admins\
-\nUsage: Retrieves a list of admins in the chat.\
+\nUsage: Recupera una lista de administradores en el chat..\
 \n\n.bots\
-\nUsage: Retrieves a list of bots in the chat.\
+\nUsage: Recupera una lista de bots en el chat..\
 \n\n.users or .users <name of member>\
-\nUsage: Retrieves all (or queried) users in the chat.\
+\nUsage: Recupera a todos los usuarios en el chat.\
 \n\n.setgppic <reply to image>\
-\nUsage: Changes the group's display picture."
+\nUsage: Cambia la imagen de perfil del grupo."
     }
 )
