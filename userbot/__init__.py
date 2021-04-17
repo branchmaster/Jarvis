@@ -97,9 +97,6 @@ CONSOLE_LOGGER_VERBOSE = sb(os.environ.get(
 # SQL Database URI
 DB_URI = os.environ.get("DATABASE_URL") or None
 
-# remove.bg API key
-REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY") or None
-
 # Chrome Driver and Headless Google Chrome Binaries
 CHROME_DRIVER = os.environ.get("CHROME_DRIVER") or None
 GOOGLE_CHROME_BIN = os.environ.get("GOOGLE_CHROME_BIN") or None
