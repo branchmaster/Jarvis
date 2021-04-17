@@ -236,7 +236,7 @@ async def amireallyalive(alive):
         f"•  💻 `Núcleo    : SLQ+ `\n"
         f"•  🗃 `Modulos   : {len(modules)} `\n"
         f"•  🤖 `Jarvis    : v{USERBOT_VERSION} `\n"
-        f"•  🕒 `En línea: {uptime} `\n"
+        f"•  🕒 `En línea : {uptime} `\n"
         "`⊷⊷⊷⊷⊷⊷⊷⊷⊷⊷⊶⊷⊶⊶⊶⊶⊶⊶⊶⊶⊶⊶`"
     )
     if ALIVE_LOGO:
