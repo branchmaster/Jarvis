@@ -599,7 +599,7 @@ async def rm_deletedacc(show):
         await show.edit("`No soy un administrador aquí!`")
         return
 
-    await show.edit("`liminando cuentas eliminadas...\nOh, puedo hacer eso?!?!`")
+    await show.edit("`expulsando cuentas eliminadas...")
     del_u = 0
     del_a = 0
 
