@@ -71,7 +71,7 @@ BOTLOG = sb(os.environ.get("BOTLOG") or "False")
 if BOTLOG:
     LOGSPAMMER = sb(os.environ.get("LOGSPAMMER") or "False")
 else:
-    LOGSPAMMER = False
+    LOGSPAMMER = True
 
 # Bleep Blop, this is a bot ;)
 PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN") or "False")
