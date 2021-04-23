@@ -92,6 +92,7 @@
     },
     "ALIVE_LOGO": {
       "description": "Mostrar imagen / logotipo en mensaje .alive. Rellene el valor de la imagen de su imagen de enlace, use telegra.ph para obtener su propia imagen",
+      "value": "https://telegra.ph/file/d12f7e46c235e40b6e6c4.jpg",
       "required": false
     },
     "LOGSPAMMER": {
