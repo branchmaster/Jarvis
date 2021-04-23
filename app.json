@@ -39,18 +39,6 @@
       "description": "Agregue el nombre de la aplicación Heroku aquí.",
       "required": true
     },
-    "GIT_REPO_NAME": {
-      "description": "Add the GIT_REPO_NAME here. It helps with commit on GitHub.",
-      "required": false
-    },
-    "UPSTREAM_REPO_URL": {
-      "description": "In case you maintain a fork, add your repo URL here.",
-      "required": false
-    },
-    "UPSTREAM_REPO_BRANCH": {
-      "description": "In case you maintain a fork, add your repo BRANCH here.",
-      "required": false
-    },
     "COUNTRY": {
       "description": "Configure su país para que se use en los comandos .time y .date.",
       "required": false
@@ -93,14 +81,6 @@
     "ANTI_SPAMBOT_SHOUT": {
       "description": "Report spambots to @admins in groups after they join, just in case when you don't have admin powers to kick that shit yourself.",
       "value": "False"
-    },
-    "USER_TERM_ALIAS": {
-      "description": "Set alias name of user for term bash command",
-      "required": false
-    },
-    "UPDATER_ALIAS": {
-      "description": "Set alias name for updater",
-      "required": false
     },
     "CLEAN_WELCOME": {
       "description": "Cuando se une una nueva persona, se elimina el mensaje de bienvenida anterior.",
