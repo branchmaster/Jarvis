@@ -15,7 +15,7 @@ from userbot.events import register
 
 @register(outgoing=True, pattern="^.purge$")
 async def fastpurger(purg):
-    """ For .purge command, purge all messages starting from the reply. """
+    """ El comando .purge, borra todos los mensajes a partir de la respuesta. """
     chat = await purg.get_input_chat()
     msgs = []
     itermsg = purg.client.iter_messages(chat, min_id=purg.reply_to_msg_id)
@@ -30,7 +30,7 @@ async def fastpurger(purg):
                 await purg.client.delete_messages(chat, msgs)
                 msgs = []
     else:
-        await purg.edit("`I need a mesasge to start purging from.`")
+        await purg.edit("`Necesito un mesaje para empezar a purgar.`")
         return
 
     if msgs:
@@ -43,14 +43,14 @@ async def fastpurger(purg):
 
     if BOTLOG:
         await purg.client.send_message(
-            BOTLOG_CHATID, "Purge of " + str(count) + " messages done successfully."
+            BOTLOG_CHATID, "Purga de " + str(count) + " mensajes realizados con éxito."
         )
     await sleep(2)
     await done.delete()
 
 @register(outgoing=True, pattern="^.purgeme")
 async def purgeme(delme):
-    """ For .purgeme, delete x count of your latest message."""
+    """ El comando .purgeme, elimina x mensajes que tu enviaste."""
     message = delme.text
     count = int(message[9:])
     i = 1
@@ -63,11 +63,11 @@ async def purgeme(delme):
 
     smsg = await delme.client.send_message(
         delme.chat_id,
-        "`Purge complete!` Purged " + str(count) + " messages.",
+        "`Purga completa!` " + str(count) + " mensajes borrados.",
     )
     if BOTLOG:
         await delme.client.send_message(
-            BOTLOG_CHATID, "Purge of " + str(count) + " messages done successfully."
+            BOTLOG_CHATID, "Purga de " + str(count) + " mensajes realizada con exito."
         )
     await sleep(2)
     i = 1
@@ -76,7 +76,7 @@ async def purgeme(delme):
 
 @register(outgoing=True, pattern="^.del$")
 async def delete_it(delme):
-    """ For .del command, delete the replied message. """
+    """ El comando .del, elimina el mensaje respondido. """
     msg_src = await delme.get_reply_message()
     if delme.reply_to_msg_id:
         try:
@@ -84,12 +84,12 @@ async def delete_it(delme):
             await delme.delete()
             if BOTLOG:
                 await delme.client.send_message(
-                    BOTLOG_CHATID, "Deletion of message was successful"
+                    BOTLOG_CHATID, "La eliminación del mensaje se realizó correctamente"
                 )
         except rpcbaseerrors.BadRequestError:
             if BOTLOG:
                 await delme.client.send_message(
-                    BOTLOG_CHATID, "Well, I can't delete a message"
+                    BOTLOG_CHATID, "Bueno, no puedo borrar el mensaje"
                 )
 
 
@@ -97,20 +97,20 @@ async def delete_it(delme):
 CMD_HELP.update(
     {
         "purge": ".purge\
-        \nUsage: Purges all messages starting from the reply."
+        \nUso: Elimina todos los mensajes a partir de la respuesta."
     }
 )
 
 CMD_HELP.update(
     {
         "purgeme": ".purgeme <x>\
-        \nUsage: Elimina x cantidad de sus últimos mensajes."
+        \nUso: Elimina x cantidad de sus últimos mensajes."
     }
 )
 
 CMD_HELP.update(
     {
         "del": ".del\
-\nUsage: Elimina el mensaje al que respondiste."
+        \nUso: Elimina el mensaje al que respondiste."
     }
 )
