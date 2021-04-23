@@ -69,7 +69,7 @@ BOTLOG_CHATID = int(os.environ.get("BOTLOG_CHATID") or 0)
 # Userbot logging feature switch.
 BOTLOG = sb(os.environ.get("BOTLOG") or "False")
 if BOTLOG:
-    LOGSPAMMER = sb(os.environ.get("LOGSPAMMER") or "True")
+    LOGSPAMMER = sb(os.environ.get("LOGSPAMMER") or "False")
 else:
     LOGSPAMMER = False
 
@@ -132,33 +132,6 @@ ZIP_DOWNLOAD_DIRECTORY = os.environ.get("ZIP_DOWNLOAD_DIRECTORY") or "./zips"
 
 # Clean Welcome
 CLEAN_WELCOME = sb(os.environ.get("CLEAN_WELCOME") or "False")
-
-# Google Drive Module
-G_DRIVE_DATA = os.environ.get("G_DRIVE_DATA") or None
-G_DRIVE_CLIENT_ID = os.environ.get("G_DRIVE_CLIENT_ID") or None
-G_DRIVE_CLIENT_SECRET = os.environ.get("G_DRIVE_CLIENT_SECRET") or None
-G_DRIVE_AUTH_TOKEN_DATA = os.environ.get("G_DRIVE_AUTH_TOKEN_DATA") or None
-G_DRIVE_FOLDER_ID = os.environ.get("G_DRIVE_FOLDER_ID") or None
-TEMP_DOWNLOAD_DIRECTORY = os.environ.get(
-    "TMP_DOWNLOAD_DIRECTORY") or "./downloads"
-
-# Uptobox
-USR_TOKEN = os.environ.get("USR_TOKEN_UPTOBOX", None)
-
-# Setting Up CloudMail.ru and MEGA.nz extractor binaries,
-# and giving them correct perms to work properly.
-if not os.path.exists("bin"):
-    os.mkdir("bin")
-
-binaries = {
-    "https://raw.githubusercontent.com/adekmaulana/megadown/master/megadown": "bin/megadown",
-    "https://raw.githubusercontent.com/yshalsager/cmrudl.py/master/cmrudl.py": "bin/cmrudl",
-}
-
-for binary, path in binaries.items():
-    downloader = SmartDL(binary, path, progress_bar=False)
-    downloader.start()
-    os.chmod(path, 0o755)
 
 # 'bot' variable
 if STRING_SESSION:
