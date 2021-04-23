@@ -576,7 +576,7 @@ async def rm_deletedacc(show):
     del_u = 0
     del_status = "`No se encontraron cuentas eliminadas, el grupo está limpio`"
 
-    if con != "🔍":
+    if con != "clean":
         await show.edit("`Buscando de cuentas fantasmas / eliminadas / zombies...`")
         async for user in show.client.iter_participants(show.chat_id):
 
