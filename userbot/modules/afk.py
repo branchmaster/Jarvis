@@ -59,8 +59,8 @@ async def set_afk(afk_e):
     if string:
         AFKREASON = string
         await afk_e.edit(
-            f"Me voy AFK!\
-        \nReason: `{string}`"
+            f"Estoy AFK!\
+        \nMotivo: `{string}`"
         )
     else:
         await afk_e.edit("Me voy de aquí!")
@@ -86,7 +86,7 @@ async def type_afk_is_not_true(notafk):
     afk_end = back_alive.replace(microsecond=0)
     if ISAFK:
         ISAFK = False
-        msg = await notafk.respond("He vuelto!")
+        msg = await notafk.respond("")
         time.sleep(3)
         await msg.delete()
         if BOTLOG:
@@ -96,7 +96,7 @@ async def type_afk_is_not_true(notafk):
                 + str(COUNT_MSG)
                 + " mensajes de "
                 + str(len(USERS))
-                + " chats cuando estabas afk",
+                + " chats cuando estabas AFK",
             )
             for i in USERS:
                 if str(i).isnumeric():
